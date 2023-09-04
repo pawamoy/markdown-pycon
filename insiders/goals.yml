@@ -2,6 +2,6 @@ goals:
   1000:
     name: GraviFridge User Manual
     features:
-    - name: "[Project] Markdown extension to parse `pycon` code blocks without indentation or fences."
+    - name: "[Project] Markdown extension to parse `pycon` code blocks without indentation or fences"
       ref: /
       since: 2023/09/02
