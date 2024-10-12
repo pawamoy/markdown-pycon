@@ -1,0 +1,24 @@
+# Changes here will be overwritten by Copier
+_commit: 1.5.0
+_src_path: gh:pawamoy/copier-uv
+author_email: dev@pawamoy.fr
+author_fullname: Timothée Mazzucotelli
+author_username: pawamoy
+copyright_date: '2023'
+copyright_holder: Timothée Mazzucotelli
+copyright_holder_email: dev@pawamoy.fr
+copyright_license: ISC License
+insiders: true
+insiders_email: insiders@pawamoy.fr
+insiders_repository_name: markdown-pycon
+project_description: Markdown extension to parse `pycon` code blocks without indentation
+    or fences.
+project_name: Markdown PyCon
+public_release: true
+python_package_command_line_name: ''
+python_package_distribution_name: markdown-pycon
+python_package_import_name: markdown_pycon
+repository_name: markdown-pycon
+repository_namespace: pawamoy
+repository_provider: github.com
+
