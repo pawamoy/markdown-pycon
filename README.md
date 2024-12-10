@@ -3,7 +3,6 @@
 [![ci](https://github.com/pawamoy/markdown-pycon/workflows/ci/badge.svg)](https://github.com/pawamoy/markdown-pycon/actions?query=workflow%3Aci)
 [![documentation](https://img.shields.io/badge/docs-mkdocs-708FCC.svg?style=flat)](https://pawamoy.github.io/markdown-pycon/)
 [![pypi version](https://img.shields.io/pypi/v/markdown-pycon.svg)](https://pypi.org/project/markdown-pycon/)
-[![gitpod](https://img.shields.io/badge/gitpod-workspace-708FCC.svg?style=flat)](https://gitpod.io/#https://github.com/pawamoy/markdown-pycon)
 [![gitter](https://badges.gitter.im/join%20chat.svg)](https://app.gitter.im/#/room/#markdown-pycon:gitter.im)
 
 Markdown extension to parse `pycon` code blocks without indentation or fences.
