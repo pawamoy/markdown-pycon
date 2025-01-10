@@ -6,6 +6,7 @@ import re
 import textwrap
 from re import Pattern
 from typing import TYPE_CHECKING, Any
+from xml.etree.ElementTree import Element
 
 from markdown.blockprocessors import BlockProcessor
 from markdown.extensions import Extension
@@ -14,8 +15,6 @@ from markupsafe import Markup
 from pymdownx.highlight import Highlight, HighlightExtension
 
 if TYPE_CHECKING:
-    from xml.etree.ElementTree import Element
-
     from markdown import Markdown
 
 _RE_DOCTEST_FLAGS: Pattern = re.compile(r"(\s*#\s*doctest:.+)$", re.MULTILINE)
@@ -89,7 +88,6 @@ class Highlighter(Highlight):
         src: str,
         language: str | None = None,
         *,
-        inline: bool = False,
         dedent: bool = True,
         linenums: bool | None = None,
         **kwargs: Any,
@@ -99,7 +97,6 @@ class Highlighter(Highlight):
         Arguments:
             src: The code to highlight.
             language: Explicitly tell what language to use for highlighting.
-            inline: Whether to highlight as inline.
             dedent: Whether to dedent the code before highlighting it or not.
             linenums: Whether to add line numbers in the result.
             **kwargs: Pass on to `pymdownx.highlight.Highlight.highlight`.
@@ -117,16 +114,10 @@ class Highlighter(Highlight):
         if linenums is not None:
             self.linenums = linenums
         try:
-            result = super().highlight(src, language, inline=inline, **kwargs)
+            result = super().highlight(src, language, **kwargs)
         finally:
             self.linenums = old_linenums
 
-        if inline:
-            # From the maintainer of codehilite, the codehilite CSS class, as defined by the user,
-            # should never be added to inline code, because codehilite does not support inline code.
-            # See https://github.com/Python-Markdown/markdown/issues/1220#issuecomment-1692160297.
-            css_class = "" if self._highlighter == "codehilite" else kwargs["css_class"]
-            return Markup(f'<code class="{css_class} language-{language}">{result.text}</code>')
         return Markup(result)
 
 
@@ -136,11 +127,14 @@ class PyConBlockProcessor(BlockProcessor):
     def test(self, parent: Element, block: str) -> bool:  # noqa: ARG002
         return block.startswith(">>>")
 
-    def run(self, parent: Element, blocks: list[str]) -> bool | None:  # noqa: ARG002
+    def run(self, parent: Element, blocks: list[str]) -> bool | None:
         block = blocks.pop(0)
         block = _RE_DOCTEST_FLAGS.sub("", block)
         block = _RE_DOCTEST_BLANKLINE.sub("", block)
-        blocks.insert(0, Highlighter(self.parser.md).highlight(block, "pycon"))
+        highlighted = Highlighter(self.parser.md).highlight(block, "pycon")
+        el = Element("p")
+        el.text = self.parser.md.htmlStash.store(highlighted)
+        parent.append(el)
         return None
 
 
