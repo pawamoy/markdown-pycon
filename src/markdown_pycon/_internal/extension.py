@@ -1,4 +1,20 @@
-"""This module contains the Markdown block processor and extension."""
+# SPDX-License-Identifier: ISC
+#
+# ISC License
+#
+# Copyright (c) 2023, Timothée Mazzucotelli and contributors
+#
+# Permission to use, copy, modify, and/or distribute this software for any
+# purpose with or without fee is hereby granted, provided that the above
+# copyright notice and this permission notice appear in all copies.
+#
+# THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+# WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+# MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+# ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+# WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+# ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+# OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 from __future__ import annotations
 
@@ -83,7 +99,7 @@ class Highlighter(Highlight):
         self._css_class = config.pop("css_class", "highlight")
         super().__init__(**{name: opt for name, opt in config.items() if name in self._highlight_config_keys})
 
-    def highlight(
+    def highlight(  # ty:ignore[invalid-method-override]
         self,
         src: str,
         language: str | None = None,
@@ -118,16 +134,18 @@ class Highlighter(Highlight):
         finally:
             self.linenums = old_linenums
 
-        return Markup(result)
+        return Markup(result)  # noqa: S704
 
 
 class PyConBlockProcessor(BlockProcessor):
     """Our block processor."""
 
     def test(self, parent: Element, block: str) -> bool:  # noqa: ARG002
+        """Test whether we should process this block."""
         return block.startswith(">>>")
 
     def run(self, parent: Element, blocks: list[str]) -> bool | None:
+        """Handle the block. Highlight as `pycon` code block."""
         block = blocks.pop(0)
         block = _RE_DOCTEST_FLAGS.sub("", block)
         block = _RE_DOCTEST_BLANKLINE.sub("", block)
