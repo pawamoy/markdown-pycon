@@ -50,7 +50,7 @@ PASTE TRACEBACK HERE
      redacting sensitive information. -->
 
 ```bash
-python -m markdown_pycon.debug  # | xclip -selection clipboard
+python -m markdown_pycon._internal.debug  # | xclip -selection clipboard
 ```
 
 PASTE MARKDOWN OUTPUT HERE

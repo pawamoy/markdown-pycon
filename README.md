@@ -1,9 +1,9 @@
 # Markdown PyCon
 
 [![ci](https://github.com/pawamoy/markdown-pycon/workflows/ci/badge.svg)](https://github.com/pawamoy/markdown-pycon/actions?query=workflow%3Aci)
-[![documentation](https://img.shields.io/badge/docs-mkdocs-708FCC.svg?style=flat)](https://pawamoy.github.io/markdown-pycon/)
+[![documentation](https://img.shields.io/badge/docs-zensical-FF9100.svg?style=flat)](https://pawamoy.github.io/markdown-pycon/)
 [![pypi version](https://img.shields.io/pypi/v/markdown-pycon.svg)](https://pypi.org/project/markdown-pycon/)
-[![gitter](https://badges.gitter.im/join%20chat.svg)](https://app.gitter.im/#/room/#markdown-pycon:gitter.im)
+[![gitter](https://img.shields.io/badge/matrix-chat-4DB798.svg?style=flat)](https://app.gitter.im/#/room/#markdown-pycon:gitter.im)
 
 Markdown extension to parse `pycon` code blocks without indentation or fences.
 
@@ -55,3 +55,8 @@ This is a pycon code block
 
 [Doctest flags](https://docs.python.org/3/library/doctest.html#option-flags)
 will be removed from the code lines.
+
+## Sponsors
+
+<!-- sponsors-start -->
+<!-- sponsors-end -->

@@ -15,18 +15,3 @@
 # WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
 # ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
-
-"""Configuration for the pytest test suite."""
-
-import pytest
-from markdown import Markdown
-
-
-@pytest.fixture
-def md() -> Markdown:
-    """Return a Markdown instance.
-
-    Returns:
-        Markdown instance.
-    """
-    return Markdown(extensions=["pycon"])
