@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 <!-- insertion marker -->
+## [1.0.2](https://github.com/pawamoy/markdown-pycon/releases/tag/1.0.2) - 2026-10-06
+
+<small>[Compare with 1.0.1](https://github.com/pawamoy/markdown-pycon/compare/1.0.1...1.0.2)</small>
+
+### Build
+
+- Drop support for Python 3.10 ([8059348](https://github.com/pawamoy/markdown-pycon/commit/805934803b8a1401cac64b946e5d901b2b09e3a3) by Timothée Mazzucotelli).
+
 ## [1.0.1](https://github.com/pawamoy/markdown-pycon/releases/tag/1.0.1) - 2025-01-10
 
 <small>[Compare with 1.0.0](https://github.com/pawamoy/markdown-pycon/compare/1.0.0...1.0.1)</small>
